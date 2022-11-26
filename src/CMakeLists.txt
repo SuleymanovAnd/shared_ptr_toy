@@ -9,6 +9,7 @@ set(SOURCE
 set(INCLUDE
         ${MY_DIRECTORY}/shared_ptr_toy.h
         ${MY_DIRECTORY}/Toy.h
+        ${MY_DIRECTORY}/Dog.h
         )
 
 
