@@ -7,4 +7,6 @@ int main() {
     Dog a ("sharik",boll);
     Dog b ("Izume",boll);
     Dog c ("Venik",bone);
+    boll.reset();
+    Dog e ("MrGaf",boll);
 }
