@@ -3,6 +3,8 @@
 
 int main() {
     Shared_ptr_toy boll = make_shared_toy("boll");
-    Dog ("sharik",boll);
-    Dog ("Izume",boll);
+    Shared_ptr_toy bone = make_shared_toy("bone");
+    Dog a ("sharik",boll);
+    Dog b ("Izume",boll);
+    Dog c ("Venik",bone);
 }
