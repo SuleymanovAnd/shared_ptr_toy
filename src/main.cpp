@@ -10,5 +10,4 @@ int main() {
     boll.reset();
     Dog e ("MrGaf",boll);
 
-    a = a;
 }
