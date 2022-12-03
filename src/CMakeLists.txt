@@ -4,7 +4,9 @@ set (MY_DIRECTORY ${CMAKE_SOURCE_DIR}/include)
 
 set(SOURCE
         main.cpp
-
+        Dog.cpp
+        shared_ptr_toy.cpp
+        Toy.cpp
         )
 set(INCLUDE
         ${MY_DIRECTORY}/shared_ptr_toy.h
