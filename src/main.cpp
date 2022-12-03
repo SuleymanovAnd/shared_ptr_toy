@@ -9,4 +9,6 @@ int main() {
     Dog c ("Venik",bone);
     boll.reset();
     Dog e ("MrGaf",boll);
+
+    a = a;
 }

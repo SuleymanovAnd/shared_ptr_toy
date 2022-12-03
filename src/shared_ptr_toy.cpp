@@ -36,11 +36,6 @@ Shared_ptr_toy& Shared_ptr_toy:: operator = (Shared_ptr_toy& oth){
     }else {
 
         if (this == &oth) {
-            this->obj.push_back(toyObj);
-            strongRefs++;
-            *source = oth;
-            oth.strongRefs++;
-            oth.obj.push_back(toyObj);
             return *this;
         } else {
             if(toyObj!=nullptr)  delete toyObj;
