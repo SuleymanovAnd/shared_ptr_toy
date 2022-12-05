@@ -11,6 +11,8 @@ private:
    bool sharedPtrUser = false;
    Shared_ptr_toy* source = nullptr;
    bool srt = false;
+   bool isReset = false;
+   std::vector <Shared_ptr_toy*> allUsers;
 public:
     Shared_ptr_toy ();
 

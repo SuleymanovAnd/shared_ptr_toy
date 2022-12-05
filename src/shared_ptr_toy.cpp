@@ -38,6 +38,7 @@ Shared_ptr_toy& Shared_ptr_toy:: operator = (Shared_ptr_toy& oth){
         if (this == &oth) {
             return *this;
         } else {
+            oth.allUsers.push_back(this);
             if(toyObj!=nullptr)  delete toyObj;
             strongRefs = oth.strongRefs;
             toyObj = oth.toyObj;
@@ -57,28 +58,41 @@ Shared_ptr_toy& Shared_ptr_toy:: operator = (Shared_ptr_toy& oth){
     }
 }
 void Shared_ptr_toy:: reset (){
-    delete toyObj;
-    toyObj = nullptr;
+    obj.resize(0);
+    Toy* emptyToy;
+    toyObj = emptyToy;
+    isReset = true;
+    for(int i = 0; i <allUsers.size();i++){
+        allUsers[i]->isReset = true;
+    }
 }
 
 Shared_ptr_toy::~Shared_ptr_toy (){
     std::cout << "Destructor spt" << this << std::endl;
     if(strongRefs == 0 && !srt) {
-        if(toyObj!=nullptr) {
+        if(!isReset) {
             delete toyObj;
             toyObj = nullptr;
         }
         if(source != nullptr) {
-            delete source;
             source = nullptr;
         }
+        if(allUsers.size()>0)allUsers.resize(0);
     }
     if (strongRefs > 0 && sharedPtrUser) {
         obj.pop_back ();
         strongRefs--;
         source->obj.pop_back();
         source->strongRefs--;
-
+        if(strongRefs == 0 && isReset) {
+            if (toyObj != nullptr) {
+                delete toyObj;
+                toyObj = nullptr;
+            }
+            if (source != nullptr) {
+                source = nullptr;
+            }
+        }
     }
 }
 
@@ -87,3 +101,4 @@ Shared_ptr_toy& make_shared_toy (std::string inName){
     Shared_ptr_toy *tempS = new Shared_ptr_toy(temp) ;
     return *tempS;
 }
+
